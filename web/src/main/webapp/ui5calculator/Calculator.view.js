@@ -78,7 +78,7 @@ sap.ui
 						oLayout.addRow(createButtonRow('calc-row1', [ '!<-', 'C',
 								'!CE', '!+/-' ]));
 						oLayout.addRow(createButtonRow('calc-row2', [ '7', '8',
-								'9', '!/' ]));
+								'9', '/' ]));
 						oLayout.addRow(createButtonRow('calc-row3', [ '4', '5',
 								'6', '*' ]));
 						oLayout.addRow(createButtonRow('calc-row4', [ '1', '2',

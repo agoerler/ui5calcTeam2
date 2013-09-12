@@ -43,7 +43,7 @@ sap.ui.controller("ui5calculator.Calculator", {
 	//
 	// },
 	setDisplayValue : function(value) {
-		value = parseInt("" + value);
+		value = parseFloat("" + value);
 		this.model.setProperty("/display", value);
 	},
 
@@ -85,6 +85,15 @@ sap.ui.controller("ui5calculator.Calculator", {
 			
 			return;
 		}
+		
+		if ('/' == button) {
+			this.operand = this.model.getProperty("/display");
+			this.startNext = true;
+			
+			this.operator = "/";
+			
+			return;
+		}
 
 		if ('=' == button) {
 			if (this.operand) 
@@ -96,6 +105,9 @@ sap.ui.controller("ui5calculator.Calculator", {
 				
 				if(this.operator == "*")
 					 answer = this.model.getProperty("/display") * this.operand;
+				
+				if(this.operator == "/")
+					answer = this.operand / this.model.getProperty("/display");
 				
 				this.setDisplayValue(answer);
 			}
