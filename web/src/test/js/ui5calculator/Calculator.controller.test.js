@@ -152,3 +152,58 @@ describe("Equals w/o operation does keep display value unchanged", function() {
 	});
 
 });
+
+describe("Division Tests", function() {
+
+	var sut = undefined;
+
+	beforeEach(function() {
+		sut = sap.ui.controller("ui5calculator.Calculator");
+		sut.onInit();
+	});
+
+	it("should show 1 after pressing dividing 0.25 by 0.25", function() {
+		sut.buttonPressed("0.25");
+		sut.buttonPressed("/");
+		expect(sut.model.getProperty("/display")).toBe(0.25);
+		sut.buttonPressed("0.25");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(1);
+	});
+	
+	it("should show 4 after pressing dividing 8 by 2", function() {
+		sut.buttonPressed("8");
+		sut.buttonPressed("/");
+		expect(sut.model.getProperty("/display")).toBe(8);
+		sut.buttonPressed("2");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(4);
+	});
+	
+	it("should show 0.5 after pressing dividing 5 by 10", function() {
+		sut.buttonPressed("5");
+		sut.buttonPressed("/");
+		expect(sut.model.getProperty("/display")).toBe(5);
+		sut.buttonPressed("10");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(0.5);
+	});
+	
+	it("should show -0.5 after pressing dividing 5 by -10", function() {
+		sut.buttonPressed("5");
+		sut.buttonPressed("/");
+		expect(sut.model.getProperty("/display")).toBe(5);
+		sut.buttonPressed("-10");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(-0.5);
+	});
+
+	it("should show 0.5 after pressing dividing -5 by -10", function() {
+		sut.buttonPressed("-5");
+		sut.buttonPressed("/");
+		expect(sut.model.getProperty("/display")).toBe(-5);
+		sut.buttonPressed("-10");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(0.5);
+	});
+});
