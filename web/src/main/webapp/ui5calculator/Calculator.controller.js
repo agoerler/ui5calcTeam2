@@ -136,6 +136,19 @@ sap.ui.controller("ui5calculator.Calculator", {
 			
 			return;
 		}
+		
+		if ('1/x' == button) {
+			this.operand = this.model.getProperty("/display");
+			this.startNext = true;
+			
+			this.operator = "1/x";
+
+			answer = 1 / this.operand;
+			
+			this.setDisplayValue(answer);
+			
+			return;
+		}
 
 		if ('=' == button) {
 			if (this.operand) 
@@ -157,12 +170,9 @@ sap.ui.controller("ui5calculator.Calculator", {
 				if(this.operator == "!")
 				{	
 					answer = this.factorial(this.model.getProperty("/display"));
-				
 				}
 				
-				
-				this.setDisplayValue(answer);
-			
+				this.setDisplayValue(answer);		
 			
 			}
 			

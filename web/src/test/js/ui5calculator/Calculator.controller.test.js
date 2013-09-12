@@ -248,4 +248,40 @@ describe("Division Tests", function() {
 		sut.buttonPressed("=");
 		expect(sut.model.getProperty("/display")).toBe(0.5);
 	});
+});	
+	
+describe("1/x Tests", function() {
+
+	var sut = undefined;
+
+	beforeEach(function() {
+		sut = sap.ui.controller("ui5calculator.Calculator");
+		sut.onInit();
+	});
+
+	it("should show 1/2 after pressing 2 and 1/x", function() {
+		sut.buttonPressed("2");
+		sut.buttonPressed("1/x");
+		expect(sut.model.getProperty("/display")).toBe(0.5);
+	});
+	
+	it("should show 4 after pressing 0.25 and 1/x", function() {
+		sut.buttonPressed("0.25");
+		sut.buttonPressed("1/x");
+		expect(sut.model.getProperty("/display")).toBe(4);
+	});
+	
+	it("should show -4 after pressing -0.25 and 1/x", function() {
+		sut.buttonPressed("-0.25");
+		sut.buttonPressed("1/x");
+		expect(sut.model.getProperty("/display")).toBe(-4);
+	});
+	
+	it("should show 2 after pressing 2 and 1/x twice", function() {
+		sut.buttonPressed("2");
+		sut.buttonPressed("1/x");
+		sut.buttonPressed("1/x");
+		expect(sut.model.getProperty("/display")).toBe(2);
+	});
+	
 });
