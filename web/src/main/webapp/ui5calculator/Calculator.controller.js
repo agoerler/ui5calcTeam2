@@ -151,7 +151,7 @@ sap.ui.controller("ui5calculator.Calculator", {
 		}
 
 		if ('=' == button) {
-			if (this.operand) 
+			if (typeof this.operand != 'undefined') 
 			{
 				var answer = 0;
 				
@@ -171,6 +171,14 @@ sap.ui.controller("ui5calculator.Calculator", {
 				{	
 					answer = this.factorial(this.model.getProperty("/display"));
 				}
+				
+				if(this.operator == "^")
+				{	
+					answer = Math.pow(this.operand, this.model.getProperty("/display"));
+				
+				}
+				
+				
 				
 				this.setDisplayValue(answer);		
 			
