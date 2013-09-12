@@ -85,8 +85,9 @@ sap.ui
 								'3', '!-' ]));
 						oLayout.addRow(createButtonRow('calc-row5', [ '0', '0',
 								'!,', '+' ]));
-						oLayout.addRow(createButtonRow('calc-row6', [ '=', '=',
+						oLayout.addRow(createButtonRow('calc-row6', [ ' !', '^',
 								'=', '=' ]));
+						// ' ! to escape
 
 						var oPanel = new sap.ui.commons.Panel({
 							id : "calc-panel",

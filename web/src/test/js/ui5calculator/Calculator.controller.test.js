@@ -111,5 +111,47 @@ describe("Equals w/o operation does keep display value unchanged", function() {
 		sut.buttonPressed("=");
 		expect(sut.model.getProperty("/display")).toBe(5);
 	});
+	
+	
+
+});
+
+describe("Factorial", function() {
+
+	var sut = undefined;
+
+	beforeEach(function() {
+		sut = sap.ui.controller("ui5calculator.Calculator");
+		sut.onInit();
+	});
+
+	it("should show 1 for 0", function() {
+		sut.buttonPressed("0");
+		sut.buttonPressed(" !");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(1);
+	});
+	
+	it("should show 1 for 1", function() {
+		sut.buttonPressed("1");
+		sut.buttonPressed(" !");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(1);
+	});
+	
+	it("should show 2 for 2", function() {
+		sut.buttonPressed("2");
+		sut.buttonPressed(" !");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(2);
+	});
+	
+	it("should show 6 for 3", function() {
+		sut.buttonPressed("3");
+		sut.buttonPressed(" !");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(6);
+	});
+	
 
 });
