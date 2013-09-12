@@ -3,6 +3,7 @@ sap.ui.controller("ui5calculator.Calculator", {
 
 	operand : undefined,
 	startNext : true,
+	operator: undefined,
 
 	/**
 	 * Called when a controller is instantiated and its View controls (if
@@ -70,13 +71,33 @@ sap.ui.controller("ui5calculator.Calculator", {
 		if ('+' == button) {
 			this.operand = this.model.getProperty("/display");
 			this.startNext = true;
+			
+			this.operator = "+";
+			
+			return;
+		}
+		
+		if ('*' == button) {
+			this.operand = this.model.getProperty("/display");
+			this.startNext = true;
+			
+			this.operator = "*";
+			
 			return;
 		}
 
 		if ('=' == button) {
-			if (this.operand) {
-				var sum = this.model.getProperty("/display") + this.operand;
-				this.setDisplayValue(sum);
+			if (this.operand) 
+			{
+				var answer = 0;
+				
+				if(this.operator == "+")
+					answer = this.model.getProperty("/display") + this.operand;
+				
+				if(this.operator == "*")
+					 answer = this.model.getProperty("/display") * this.operand;
+				
+				this.setDisplayValue(answer);
 			}
 			return;
 		}

@@ -80,7 +80,7 @@ sap.ui
 						oLayout.addRow(createButtonRow('calc-row2', [ '7', '8',
 								'9', '!/' ]));
 						oLayout.addRow(createButtonRow('calc-row3', [ '4', '5',
-								'6', '!*' ]));
+								'6', '*' ]));
 						oLayout.addRow(createButtonRow('calc-row4', [ '1', '2',
 								'3', '!-' ]));
 						oLayout.addRow(createButtonRow('calc-row5', [ '0', '0',
