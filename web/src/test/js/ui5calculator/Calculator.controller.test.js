@@ -46,8 +46,26 @@ describe("The display of a controller showing 5", function() {
 
 		expect(sut.model.getProperty("/display")).toBe(0);
 	});
-
+	
 });
+//negativ number 2a
+describe("The display of a controller showing -5", function() {
+
+	var sut = undefined;
+
+	beforeEach(function() {
+		sut = sap.ui.controller("ui5calculator.Calculator");
+		sut.onInit();
+		sut.buttonPressed("5");
+	});
+
+	it("should show 5 after pressing '+/-'", function() {
+		sut.buttonPressed("+/-");
+
+		expect(sut.model.getProperty("/display")).toBe(-5);
+	});
+});
+
 
 describe("Initial display of a controller ", function() {
 
@@ -93,6 +111,27 @@ describe("Addition with multidigit operands", function() {
 		sut.buttonPressed("5");
 		sut.buttonPressed("=");
 		expect(sut.model.getProperty("/display")).toBe(55);
+	});
+
+});
+//substraction test 2b
+describe("Substraction with multidigit operands", function() {
+
+	var sut = undefined;
+
+	beforeEach(function() {
+		sut = sap.ui.controller("ui5calculator.Calculator");
+		sut.onInit();
+		sut.buttonPressed("1");
+		sut.buttonPressed("0");
+	});
+
+	it("should show -1 after adding 11", function() {
+		sut.buttonPressed("-");
+		sut.buttonPressed("1");
+		sut.buttonPressed("1");
+		sut.buttonPressed("=");
+		expect(sut.model.getProperty("/display")).toBe(-1);
 	});
 
 });
